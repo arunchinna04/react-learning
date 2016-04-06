@@ -26,7 +26,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 //import Nav from './Nav.react';
-import { connect } from 'react-redux';
+//import { connect } from 'react-redux';
 //import auth from '../utils/auth';
 
 class App extends Component {

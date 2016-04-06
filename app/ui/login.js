@@ -1,26 +1,38 @@
-import React, { Component} from 'react';
-import { connect } from 'react-redux';
-//import Form from '../Form.react';
-//import auth from '../../utils/auth';
-// import { login } from '../../actions/AppActions';
-// import LoadingIndicator from '../LoadingIndicator.react';
+import React, { Component, PropTypes} from 'react';
+import { Navigation } from 'react-router'
+//import { Router, useRouterHistory } from 'react-router'
 
 export default class Login extends Component {
-    render() {
-    return (
-         <div>
-            //<div className="form__field-wrapper">
-              <input className="form__field-input" type="text" id="username" value={this.props.data.username} placeholder="frank.underwood" onChange={this._changeUsername.bind(this)} autoCorrect="off" autoCapitalize="off" spellCheck="false" />
-              <label className="form__field-label" htmlFor="username">Username</label>
-        </div>
-           //<div className="form__field-wrapper">
-           // <input className="form__field-input" id="password" type="password" value={this.props.data.password} placeholder="••••••••••"  onChange={this._changePassword.bind(this)} />
-           // <label className="form__field-label" htmlFor="password">Password</label>
-          //</div>
-        //</div>
-        );
-    }
-  
 
+  contextTypes: {
+    router: PropTypes.object.isRequired
+  }
+
+  // This will be called when the user clicks on the login button
+  login(e) {
+    e.preventDefault();
+    // Here, we call an external AuthService. We’ll create it in the next step
     
+    const email = this.refs.email.value
+    const pass = this.refs.pass.value
+    console.log(" logging in", email, pass);
+    
+   // this.context.router.push('/users')
+
+  }
+
+  render() {
+    return (
+      <div>
+        <form role="form">
+        <div className="form-group">
+          <input type="text" ref="email" placeholder="Username" />
+          <input type="password" ref="pass" placeholder="Password" />
+        </div>
+        <button type="submit" onClick={this.login.bind(this)}>Submit</button>
+      </form>
+    </div>
+    );
+  }
 }
+
